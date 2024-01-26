@@ -1,0 +1,50 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def deleteNode(head, pos):
+    if head is None or pos < 0:
+        return head
+    if pos == 0:
+        return head.next
+    current = head
+    prev = None
+    count = 0
+    while current is not None and count < pos:
+        prev = current
+        current = current.next
+        count += 1
+    if current is None:
+        return head
+
+    # Delete the node at the specified position
+    prev.next = current.next
+
+    return head
+
+# Function to print the linked list
+def printLinkedList(head):
+    while head is not None:
+        print(head.data, end=" ")
+        head = head.next
+    print()
+
+# Taking Input
+elements = list(map(int, input().split()))
+pos = int(input())
+head = Node(elements[0])
+current = head
+for element in elements[1:]:
+    current.next = Node(element)
+    current = current.next
+
+head = deleteNode(head, pos)
+
+printLinkedList(head)
+
+
+
+
+
+
