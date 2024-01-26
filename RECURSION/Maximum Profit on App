@@ -1,0 +1,14 @@
+def maximumProfit(N, budgets):
+    budgets.sort(reverse=True)
+    max_profit = 0
+    for i, budget in enumerate(budgets):
+        profit = (i + 1) * budget
+        max_profit = max(max_profit, profit)
+
+    return max_profit
+N = int(input())
+
+budgets = [int(ele) for ele in input().split()]
+
+ans = maximumProfit(N, budgets)
+print(ans)
