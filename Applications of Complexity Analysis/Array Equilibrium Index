@@ -1,0 +1,37 @@
+from sys import stdin
+
+def arrayEquilibriumIndex(arr, n) :
+    total_sum = sum(arr)
+    left_sum = 0
+    for i in range(n):
+        right_sum = total_sum - left_sum - arr[i]
+        if left_sum == right_sum:
+            return i
+        left_sum += arr[i]
+    return -1
+
+#Taking input using fast I/O method
+def takeInput() :
+    n = int(stdin.readline().strip())
+    if n == 0 :
+        return list(), 0
+
+    arr = list(map(int, stdin.readline().strip().split(" ")))
+    return arr, n
+
+
+def printList(arr, n) : 
+    for i in range(n) :
+        print(arr[i], end = " ")
+    print()
+
+
+#main
+t = int(stdin.readline().strip())
+
+while t > 0 :
+    
+    arr, n = takeInput()
+    print(arrayEquilibriumIndex(arr, n))
+
+    t-= 1
