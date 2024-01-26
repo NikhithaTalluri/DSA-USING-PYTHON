@@ -1,0 +1,18 @@
+def split(arr, i, sum1, sum2):
+    if i == len(arr):
+        return sum1 == sum2
+    if arr[i] % 5 == 0:
+        return split(arr, i + 1, sum1 + arr[i], sum2)
+    elif arr[i] % 3 == 0:
+        return split(arr, i + 1, sum1, sum2 + arr[i])
+    else:
+        return split(arr, i + 1, sum1 + arr[i], sum2) or split(arr, i + 1, sum1, sum2 + arr[i])
+
+n = int(input())
+arr = [int(ele) for ele in input().split()]
+
+ans = split(arr, 0, 0, 0)
+if ans:
+    print('true')
+else:
+    print('false')
