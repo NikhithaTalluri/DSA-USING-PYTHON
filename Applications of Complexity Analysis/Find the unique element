@@ -1,0 +1,38 @@
+from sys import stdin
+
+def findUnique(arr, n) :
+    unique_list = []
+    for i in range(n):
+        if arr[i] not in unique_list:
+            unique_list.append(arr[i])
+        else:
+            unique_list.remove(arr[i])
+    
+    if len(unique_list) > 0:
+        return unique_list[0]
+
+#taking input using fast I/O method
+def takeInput() :
+    n = int(stdin.readline().strip())
+    if n == 0 :
+        return list(), 0
+
+    arr = list(map(int, stdin.readline().strip().split(" ")))
+    return arr, n
+
+
+def printList(arr, n) : 
+    for i in range(n) :
+        print(arr[i], end = " ")
+    print()
+
+
+#main
+t = int(stdin.readline().strip())
+
+while t > 0 :
+    
+    arr, n = takeInput()
+    print(findUnique(arr, n))
+
+    t-= 1
