@@ -1,0 +1,19 @@
+from math import *
+from collections import *
+from sys import *
+from os import *
+
+## Read input as specified in the question.
+## Print output as specified in the question.
+def rec_star(string):
+  if len(string)==1:
+    return string
+  output = rec_star(string[1:])
+  if string[0] == string[1]:
+     return string[0]+'*'+ str(output)   
+  else:
+    return string[0] + str(output) 
+
+string = input()
+result = rec_star(string)
+print(result)
